@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+            opacity: 0;
+            transition: opacity ease 1s 4s;
+        }
+
+        body.ready {
+            opacity: 1;
+        }
+
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        #app {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            margin-top: -50px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px -6px #232323;
+            -webkit-transition: 0.3s ease width, 0.3s ease height, 0.3s margin-top;
+            transition: 0.3s ease width, 0.3s ease height, 0.3s margin-top;
+        }
+
+        #app.active {
+            width: 310px;
+            height: 264px;
+            margin-top: -130px;
+        }
+
+        #app:before,
+        #ytd-link:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: -65px;
+            background-size: cover;
+            background-attachment: fixed;
+            -webkit-filter: blur(30px);
+            filter: blur(30px);
+        }
+
+        body,
+        #app:before,
+        #ytd-link:before {
+            background-image: url(https://himalayasingh.github.io/mac-reactions/img/bg-1.jpg);
+        }
+
+        #init-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: 0 auto;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-transition: 0.4s ease transform, 0.4s ease opacity;
+            transition: 0.4s ease transform, 0.4s ease opacity;
+            z-index: 1;
+        }
+
+        #app.active #init-btn {
+            opacity: 0;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
+
+        #init-btn:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url(https://himalayasingh.github.io/mac-reactions/img/hand-1.svg);
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body translate="no">
+    <div id="app">
+        <div id="init-btn"></div>
+    </div>
+</body>
+<script>
+    var e = document.createElement("img")
+    e.src = "https://himalayasingh.github.io/mac-reactions/img/bg-1.jpg"
+    e.onload = function () {
+        document.body.className += " ready"
+    }
+    document.getElementById("init-btn").onclick = enter
+
+    function enter() {
+        console.log('enter')
+    }
+</script>
+
+</html>
